@@ -1,10 +1,10 @@
 # Moving Average Crossover Backtest
 
-A deliberately simple 20/60-day moving-average crossover, backtested across several assets and benchmarked against buy-and-hold. The point of the repo is to assess a naive trend rule honestly, not to present a working strategy.
+A simple 20/60-day moving-average crossover, backtested across several assets and benchmarked against buy-and-hold. The point is to assess a naive trend rule honestly, not to present a working strategy.
 
 ## How it works
 
-The strategy computes a 20-day (fast) and 60-day (slow) moving average of adjusted close prices. The signal is +1 (long) when the fast MA is above the slow MA and -1 (short) otherwise. The position is taken from the *previous* day's signal, so there is no lookahead bias. Daily strategy return = position × daily return, compounded into an equity curve and benchmarked against buy-and-hold over the same window.
+The strategy computes a 20-day (fast) and 60-day (slow) moving average of adjusted close prices. The signal is +1 (long) when the fast MA is above the slow MA and -1 (short) otherwise. The position is taken from the previous day's signal, so there is no lookahead bias. Daily strategy return = position × daily return, compounded into an equity curve and benchmarked against buy-and-hold over the same window.
 
 ## How to run
 
@@ -30,14 +30,12 @@ Final cumulative return (multiple of starting capital), taken from the recorded 
 | BP | 2001 – 2020 | 0.34x | 1.81x |
 | Tesla (TSLA) | 2010 – 2025* | 0.26x | 291.65x |
 
-\* Requested from 2001 but data begins at listing. All effective windows also start ~60 trading days after the first price, once the slow MA has warmed up. Gold was downloaded but not backtested in the recorded runs, hence no figures.
-
-Glencore is the only asset where the strategy edges ahead — a name that went roughly sideways over the period — which is consistent with the closing point below.
+Glencore is the only asset where the strategy edges ahead, a name that roughly consolidated over the period — which is consistent with the closing point below.
 
 ## Limitations
 
 - Ignores transaction costs entirely. A ±1 crossover flips position frequently, so real costs (spread, commission, slippage) would erode returns further.
-- Always long or short, never flat — the strategy is forced to take a view even when the signal carries no information.
+- Always long or short, never flat, the strategy is forced to take a view even when the signal carries no information.
 - In-sample only. No train/test split, no out-of-sample validation.
 - Date windows are inconsistent across assets, so the cross-asset table is indicative, not a controlled comparison.
 - Trialling several assets introduces selection bias: any single asset "working" is not evidence of edge.
