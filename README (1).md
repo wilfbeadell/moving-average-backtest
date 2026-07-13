@@ -42,4 +42,4 @@ Glencore is the only asset where the strategy edges ahead, a name that roughly c
 
 ## Takeaway
 
-A naive trend rule only helps in choppy or mean-reverting regimes and destroys value in strong trends — the interesting question is regime, not the indicator.
+A naive trend rule only helps in choppy or mean-reverting regimes and destroys value in strong trends.
